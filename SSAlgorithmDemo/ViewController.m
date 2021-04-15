@@ -7,7 +7,11 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *contentTableView;
+
+@property (strong, nonatomic) NSDictionary *dataDic;
 
 @end
 
@@ -16,6 +20,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.dataDic = @{@"链表":@"NodeListViewController"};
+
+}
+
+#pragma mark - uitableview
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.dataDic.allKeys.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"algorithmdemocell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"algorithmdemocell"];
+    }
+    cell.textLabel.text = self.dataDic.allKeys[indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSString *vcName = self.dataDic.allValues[indexPath.row];
+    Class vc = NSClassFromString(vcName);
+    UIViewController *jumpVc = [[vc alloc] init];
+    jumpVc.title = self.dataDic.allKeys[indexPath.row];
+    [self.navigationController pushViewController:jumpVc animated:YES];
 }
 
 /// 冒泡排序

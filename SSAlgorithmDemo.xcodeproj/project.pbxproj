@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		336BC603260CAFA10093F475 /* NodeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 336BC602260CAFA10093F475 /* NodeListViewController.m */; };
+		336F9D63260B2D7100C661F7 /* SSNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 336F9D62260B2D7100C661F7 /* SSNode.m */; };
+		336F9D67260B2EFD00C661F7 /* SSNodeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 336F9D66260B2EFD00C661F7 /* SSNodeList.m */; };
 		3388F43A2609DD6B006CA241 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3388F4392609DD6B006CA241 /* AppDelegate.m */; };
 		3388F43D2609DD6B006CA241 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3388F43C2609DD6B006CA241 /* SceneDelegate.m */; };
 		3388F4402609DD6B006CA241 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3388F43F2609DD6B006CA241 /* ViewController.m */; };
@@ -17,6 +20,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		336BC601260CAFA10093F475 /* NodeListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NodeListViewController.h; sourceTree = "<group>"; };
+		336BC602260CAFA10093F475 /* NodeListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NodeListViewController.m; sourceTree = "<group>"; };
+		336F9D61260B2D7100C661F7 /* SSNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSNode.h; sourceTree = "<group>"; };
+		336F9D62260B2D7100C661F7 /* SSNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSNode.m; sourceTree = "<group>"; };
+		336F9D65260B2EFD00C661F7 /* SSNodeList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSNodeList.h; sourceTree = "<group>"; };
+		336F9D66260B2EFD00C661F7 /* SSNodeList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSNodeList.m; sourceTree = "<group>"; };
 		3388F4352609DD6B006CA241 /* SSAlgorithmDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSAlgorithmDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3388F4382609DD6B006CA241 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3388F4392609DD6B006CA241 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,6 +51,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		336F9D60260B2D5F00C661F7 /* SSNode */ = {
+			isa = PBXGroup;
+			children = (
+				336F9D61260B2D7100C661F7 /* SSNode.h */,
+				336F9D62260B2D7100C661F7 /* SSNode.m */,
+				336F9D65260B2EFD00C661F7 /* SSNodeList.h */,
+				336F9D66260B2EFD00C661F7 /* SSNodeList.m */,
+				336BC601260CAFA10093F475 /* NodeListViewController.h */,
+				336BC602260CAFA10093F475 /* NodeListViewController.m */,
+			);
+			path = SSNode;
+			sourceTree = "<group>";
+		};
 		3388F42C2609DD6B006CA241 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +83,7 @@
 		3388F4372609DD6B006CA241 /* SSAlgorithmDemo */ = {
 			isa = PBXGroup;
 			children = (
+				336F9D60260B2D5F00C661F7 /* SSNode */,
 				3388F4382609DD6B006CA241 /* AppDelegate.h */,
 				3388F4392609DD6B006CA241 /* AppDelegate.m */,
 				3388F43B2609DD6B006CA241 /* SceneDelegate.h */,
@@ -146,9 +169,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3388F4402609DD6B006CA241 /* ViewController.m in Sources */,
+				336F9D67260B2EFD00C661F7 /* SSNodeList.m in Sources */,
 				3388F43A2609DD6B006CA241 /* AppDelegate.m in Sources */,
+				336BC603260CAFA10093F475 /* NodeListViewController.m in Sources */,
 				3388F44B2609DD6D006CA241 /* main.m in Sources */,
 				3388F43D2609DD6B006CA241 /* SceneDelegate.m in Sources */,
+				336F9D63260B2D7100C661F7 /* SSNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

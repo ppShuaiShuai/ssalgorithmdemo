@@ -34,4 +34,19 @@
 
 + (void)insertNode:(SSNode *)node afterNode:(SSNode *)afterNode;
 
+/// 删除节点
+/// @param index index
++ (void)deleteNodeAtIndex:(NSInteger)index headNode:(SSNode *)headNode;
+
+/// query node at index
+/// @param index index
+/// @param headNode headnode
++ (void)queryNodeAtIndex:(NSInteger)index headNode:(SSNode *)headNode;
+
+/// 反向查询倒数index node
+/// @param index index
+/// @param headNode headnode
+/// @param interger method 1 2
++ (void)queryNodeCountdown:(NSInteger)index headNode:(SSNode *)headNode method:(NSInteger)interger;
+
 @end

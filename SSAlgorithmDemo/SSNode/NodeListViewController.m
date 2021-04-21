@@ -11,7 +11,7 @@
 
 @interface NodeListViewController ()
 
-@property (nonatomic, strong) NSDictionary *dic;
+@property (nonatomic, strong) NSArray *data;
 
 @end
 
@@ -23,19 +23,7 @@
     
     self.view.backgroundColor = UIColor.whiteColor;
     
-    self.dic = @{@"合并有序链表方法1":@"mergeOrder1",@"合并有序链表方法2":@"mergeOrder2"};
-    
-    //init
-    SSNodeList *list = [[SSNodeList alloc] initWithDataArray:@[@(1),@(5),@(10),@(12),@(3),@(4)]];
-    
-    //print
-    [list printNodeList];
-    
-    //reverse
-    [list reverseNodeList];
-    [list printNodeList];
-    
-    
+    self.data = @[@{@"合并有序链表方法1":@"mergeOrder1"},@{@"合并有序链表方法2":@"mergeOrder2"},@{@"删除index节点":@"deleteNode"},@{@"查询index节点":@"queryNode"},@{@"链表的反转":@"reverseNodeList"},@{@"查询index节点":@"queryNode"},@{@"反向查询index(从0开始)节点":@"queryNodeCountDown"}];
 }
 
 #pragma mark - merge
@@ -109,13 +97,67 @@
     [resultList printNodeList];
 }
 
+- (void)deleteNode{
+    
+    SSNodeList *list = [[SSNodeList alloc] initWithDataArray:@[@(3),@(5),@(8),@(11),@(18),@(30),@(35),@(5)]];
+    
+    [list printNodeList];
+    
+    [SSNodeList deleteNodeAtIndex:20 headNode:list.headNode];
+    
+    [list printNodeList];
+    
+    [SSNodeList deleteNodeAtIndex:5 headNode:list.headNode];
+    
+    [list printNodeList];
+    
+}
+
+- (void)queryNode{
+    
+    SSNodeList *list = [[SSNodeList alloc] initWithDataArray:@[@(3),@(5),@(8),@(11),@(18),@(30),@(35),@(5)]];
+    
+    [list printNodeList];
+    
+    [SSNodeList queryNodeAtIndex:8 headNode:list.headNode];
+    
+    [SSNodeList queryNodeAtIndex:2 headNode:list.headNode];
+}
+
+- (void)reverseNodeList{
+    
+    //init
+    SSNodeList *list = [[SSNodeList alloc] initWithDataArray:@[@(1),@(5),@(10),@(12),@(3),@(4)]];
+    
+    //print
+    [list printNodeList];
+    
+    //reverse
+    [list reverseNodeList];
+    [list printNodeList];
+    
+}
+
+- (void)queryNodeCountDown{
+    
+    //init
+    SSNodeList *list = [[SSNodeList alloc] initWithDataArray:@[@(1),@(5),@(10),@(12),@(3),@(4),@(8),@(20)]];
+    
+    //print
+    [list printNodeList];
+    
+    [SSNodeList queryNodeCountdown:2 headNode:list.headNode method:1];
+    
+    [SSNodeList queryNodeCountdown:2 headNode:list.headNode method:2];
+}
+
 #pragma mark -
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dic.allKeys.count;
+    return self.data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -123,14 +165,14 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseid"];
     }
-    cell.textLabel.text = self.dic.allKeys[indexPath.row];
+    cell.textLabel.text = [self.data[indexPath.row] allKeys].firstObject;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    SEL seletor = NSSelectorFromString(self.dic.allValues[indexPath.row]);
+    SEL seletor = NSSelectorFromString([self.data[indexPath.row] allValues].firstObject);
     if (seletor && [self respondsToSelector:seletor]) {
         [self performSelectorOnMainThread:seletor withObject:nil waitUntilDone:YES];
     }

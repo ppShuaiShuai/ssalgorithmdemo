@@ -10,3 +10,7 @@
 @implementation SSNode
 
 @end
+
+@implementation SSDoubleNode
+
+@end

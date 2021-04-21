@@ -14,3 +14,12 @@
 @property (nonatomic, strong) SSNode *next;    ///< 下一个节点
 
 @end
+
+/// 双链表节点类
+@interface SSDoubleNode : NSObject
+
+@property (nonatomic, assign) NSInteger data;     ///< 该节点存储的数据
+@property (nonatomic, strong) SSDoubleNode *pre;  ///< 上一个节点
+@property (nonatomic, strong) SSDoubleNode *next; ///< 下一个节点
+
+@end

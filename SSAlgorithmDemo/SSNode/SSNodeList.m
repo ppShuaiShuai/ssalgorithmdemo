@@ -118,4 +118,100 @@
     afterNode.next = node;
 }
 
+
+/// 删除节点
+/// @param index index
++ (void)deleteNodeAtIndex:(NSInteger)index headNode:(SSNode *)headNode{
+    
+    if (!headNode || !headNode.next || index <=0) {
+        NSLog(@"没有要删除的节点");
+        return;
+    }
+    
+    NSInteger i = 0;
+    SSNode *preNode;
+    SSNode *node = headNode.next;
+    while (node && i < index) {
+        preNode = node;
+        node = node.next;
+        i ++;
+    }
+    if (node) {
+        preNode.next = node.next;
+    } else {
+        NSLog(@"没有要删除的节点");
+    }
+}
+
+
+/// query node at index
+/// @param index index
+/// @param headNode headnode
++ (void)queryNodeAtIndex:(NSInteger)index headNode:(SSNode *)headNode{
+    
+    if (!headNode || !headNode.next || index <=0) {
+        NSLog(@"没有要查询的节点");
+        return;
+    }
+    SSNode *node = headNode.next;
+    NSInteger i = 0;
+    while (node && i < index) {
+        node = node.next;
+        i ++;
+    }
+    if (node) {
+        NSLog(@"要查询的节点index =%@, data = %@",@(index),@(node.data));
+    } else {
+        NSLog(@"没有要查询的节点");
+    }
+}
+
+
+/// 反向查询倒数index node
+/// @param index index
+/// @param headNode headnode
+/// @param interger method 1 2
++ (void)queryNodeCountdown:(NSInteger)index headNode:(SSNode *)headNode method:(NSInteger)interger{
+    
+    if (!headNode || !headNode.next) {
+        NSLog(@"没有要查询的节点");
+        return;
+    }
+    
+    SSNode *node = headNode.next;
+    NSInteger i = 0;
+    if (interger == 1) {
+        //method 1 先遍历一边得到总长度length 再便利[0,length - index - 1]; 区间随index是否从0开始变动 有些链表head存储链表长度可以直接使用
+        if (index > headNode.data) {
+            NSLog(@"没有要查询的节点");
+            return;
+        }
+        NSInteger count = headNode.data - index - 1;
+        while (node && i < count) {
+            node = node.next;
+            i++;
+        }
+    } else {
+        //method 2 快慢指针
+        SSNode *fastNode = headNode.next;
+        while (fastNode && i <= index) {
+            fastNode = fastNode.next;
+            i ++;
+        }
+        if (!fastNode) {
+            NSLog(@"没有要查询的节点");
+        }
+        while (fastNode) {
+            fastNode = fastNode.next;
+            node = node.next;
+        }
+    }
+    
+    if (node) {
+        NSLog(@"要查询的节点倒数index =%@, data = %@",@(index),@(node.data));
+    } else {
+        NSLog(@"没有要查询的节点");
+    }
+}
+
 @end
